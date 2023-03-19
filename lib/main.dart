@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylish_grid/pdf_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,6 +59,9 @@ class _GridItemState extends State<_GridItem>{
         return InkWell(
           onTap: (){
             print("IMage tap");
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx){
+              return PdfScreen();
+            }));
           },
           child: ClipRRect(
             child: GridTile(

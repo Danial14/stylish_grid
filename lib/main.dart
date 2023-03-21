@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
         body: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            childAspectRatio: 1.5,
-            crossAxisSpacing: 15,
+            //childAspectRatio: 1.5,
+            //crossAxisSpacing: 15,
           ),
           itemBuilder: (ctx, position){
             return _GridItem();
@@ -54,7 +54,7 @@ class _GridItem extends StatefulWidget{
 class _GridItemState extends State<_GridItem>{
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
+    /*return LayoutBuilder(
       builder: (ctx, constraints){
         return InkWell(
           onTap: (){
@@ -79,6 +79,59 @@ class _GridItemState extends State<_GridItem>{
           ),
         );
       },
+    );*/
+    return InkWell(
+      onTap: (){
+        print("laptop");
+      },
+      child: Padding(
+        padding: EdgeInsets.only(top: 10),
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+              elevation: 5,
+              child: Column(
+                children: <Widget>[
+                  Expanded(
+                    flex: 3,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.horizontal(left: Radius.circular(15), right: Radius.circular(15)),
+                        image: DecorationImage(
+                          image: AssetImage("assets/laptop.png"
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(15), bottomLeft: Radius.circular(15))
+                      ),
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        child: Row(
+                            children: <Widget>[
+                              Text("Laptop"),
+                              SizedBox(width: 5,),
+                              Expanded(child: Text("40\$",
+                                textAlign: TextAlign.right,)),
+                            ],
+                          ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+        ),
+      ),
     );
   }
 }
